@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0%;
+        box-sizing: border-box;
+      }
+      * {
+        font-family: 'Courier New', Courier, monospace;
+      }
+      header {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        width: 100%;
+        height: 8vh;
+        background: rgb(24, 238, 34);
+        border-bottom: 2px solid rgba(8, 8, 8, 0.637);
+        padding-bottom: 0.2rem;
+        position: fixed;
+      }
+      .btn,
+      .input-control,
+      #card-list > div {
+        border: none;
+        padding: 0.5rem 1.3rem 0.5rem 1.3rem;
+        font-weight: bolder;
+        border: 2px solid black;
+        cursor: pointer;
+        outline: none;
+      }
+      .input-control {
+        padding: 0.3rem;
+        font-size: 1.2em;
+      }
+      .btn:hover {
+        transform: scale(0.9);
+      }
+      #shortener-form {
+        height: 85vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+      }
+      #link-url {
+        background-color: rgb(255, 60, 4);
+        width: 75%;
+        padding: 1rem;
+        justify-self: center;
+        margin-bottom: 1rem;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div>
+        <h1>link.ly</h1>
+      </div>
+      <div>
+        <button class="btn">login</button>
+      </div>
+    </header>
+    <section id="shortener-form">
+      {% if link %}
+      <div id="link-url">{{link}}</div>
+      {% endif %}
+      <form action="/" method="post" style="width: 75%">
+        {% csrf_token %}
+        <div>
+          <center>
+            <input
+              name="link"
+              type="text"
+              class="input-control"
+              style="width: 100%"
+              value="{{submit_link}}"
+            />
+          </center>
+          <br />
+          <center><button type="submit" class="btn">genarate</button></center>
+        </div>
+      </form>
+    </section>
+  </body>
+</html>
